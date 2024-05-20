@@ -1,0 +1,39 @@
+<section class="stepper-container">
+  <!-- The navbar for the wizard -->
+  <header class="step-header">
+    <div class="step">
+      <!--      <ng-container-->
+      <!--        *ngIf="(currentStep <= stepNumber) ||-->
+      <!--             (currentStep > stepNumber && isLast) ; then stepOngoing; else stepDone">-->
+      <!--      </ng-container>-->
+      <!--      <ng-template #stepOngoing>-->
+      <!--        {{stepNumber}}-->
+      <!--      </ng-template>-->
+      <!--      <ng-template #stepDone>-->
+      <!--        <div class="check"></div>-->
+      <!--      </ng-template>-->
+      <ng-container *ngFor="let step of steps; let i = index;">
+        <div class="step-label" [class]="(selectedIndex === i) ? activeClass : ''">
+          <ng-container *ngIf="selectedIndex <= i">
+            <div class="step-number" (click)="selectedIndex = i; getClickEvent($event)">
+              <!--            <ng-container *ngIf="step.stepLabel; else showLabelText"-->
+              <!--                          [ngTemplateOutlet]="step.stepLabel.template">-->
+              <!--            </ng-container>-->
+
+              <ng-container>{{i + 1}}</ng-container>
+              <!--            <ng-template #showLabelText>-->
+              <!--              {{ step.label }}-->
+              <!--            </ng-template>-->
+            </div>
+          </ng-container>
+        </div>
+        <div class="vertical-line" *ngIf="selectedIndex <= i"></div>
+      </ng-container>
+    </div>
+  </header>
+
+  <div class="step-content" *ngFor="let step of steps; let i = index"
+       [@stepTransition]="_getAnimationDirection(i)">
+    <ng-container [ngTemplateOutlet]="step.content"></ng-container>
+  </div>
+</section>

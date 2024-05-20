@@ -1,0 +1,46 @@
+.stepper-container {
+    height: 100vh;
+    width: 100%;
+    background: #212121;
+    overflow: hidden;
+    color: #f5f7fa;
+    .__content-wrapper{
+        display: flex;
+        flex-wrap: nowrap;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        ._content{
+            padding: 2rem 0;
+        }
+        .btn-container {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            button {
+                padding: 0.4375rem 0.2375rem;
+                text-transform: capitalize;
+                font-size: 1rem;
+                min-width: 125px;
+                background: transparent;
+                outline: none;
+                border: none;
+                color: #7552ea;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .next-btn {
+                border: 1px solid #7552ea;
+                &:hover{
+                    background: #7552ea;
+                    color: #ded9eb;
+                }
+            }
+            .previous-btn {
+                &:hover{
+                    color: #ded9eb;
+                }
+            }
+        }
+    }
+}
