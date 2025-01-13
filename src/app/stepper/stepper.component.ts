@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {animate, animateChild, group, query, state, style, transition, trigger} from "@angular/animations";
 import {CdkStepper} from "@angular/cdk/stepper";
 
@@ -7,6 +7,7 @@ import {CdkStepper} from "@angular/cdk/stepper";
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss'],
   providers: [{provide: CdkStepper, useExisting: StepperComponent}],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
   animations: [trigger('stepTransition', [
     state('previous', style({transform: 'translate3d(0, -100%, 0)', display: 'none'})),
